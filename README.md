@@ -45,6 +45,22 @@ JWT_SECRET=your_secret_key
 php artisan test
 ```
 
+
+## Roles
+
+### Author
+- Create Books
+- Manage Own Books
+- Submit Books for Review
+
+### Reviewer
+- Approve Books
+- Reject Books
+
+### Admin
+- Publish Approved Books
+
+
 ## API Usage Instructions
 
 ### Register

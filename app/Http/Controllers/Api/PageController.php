@@ -38,4 +38,31 @@ class PageController extends Controller
             'pages' => $pages
         ]);
     }
+
+    public function update(Request $request, $id)
+{
+    $page = Page::findOrFail($id);
+
+    $page->update([
+        'title' => $request->title,
+        'content' => $request->content
+    ]);
+
+    return response()->json([
+        'status' => true,
+        'page' => $page
+    ]);
+}
+
+public function destroy($id)
+{
+    $page = Page::findOrFail($id);
+
+    $page->delete();
+
+    return response()->json([
+        'status' => true,
+        'message' => 'Page deleted'
+    ]);
+}
 }

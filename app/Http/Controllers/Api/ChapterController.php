@@ -37,4 +37,31 @@ class ChapterController extends Controller
             'chapters' => $chapters
         ]);
     }
+
+    public function update(Request $request, $id)
+{
+    $chapter = Chapter::findOrFail($id);
+
+    $chapter->update([
+        'title' => $request->title,
+        'description' => $request->description
+    ]);
+
+    return response()->json([
+        'status' => true,
+        'chapter' => $chapter
+    ]);
+}
+
+public function destroy($id)
+{
+    $chapter = Chapter::findOrFail($id);
+
+    $chapter->delete();
+
+    return response()->json([
+        'status' => true,
+        'message' => 'Chapter deleted'
+    ]);
+}
 }

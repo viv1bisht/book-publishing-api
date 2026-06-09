@@ -107,4 +107,14 @@ public function dashboard(Request $request)
             ->count(),
     ]);
 }
+
+
+/////logout
+public function logout()
+{
+    return response()->json([
+        'status' => true,
+        'message' => 'Logged out successfully'
+    ]);
+}
 }

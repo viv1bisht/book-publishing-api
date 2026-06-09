@@ -75,6 +75,8 @@ public function update(Request $request, $id)
         'message' => 'Book updated successfully',
         'book' => $book
     ]);
+
+ 
 }
 
 
@@ -106,6 +108,30 @@ public function destroy(Request $request, $id)
     return response()->json([
         'status' => true,
         'message' => 'Book deleted successfully'
+    ]);
+     
+}
+
+
+////single book
+public function show(Request $request, $id)
+{
+    $user = $request->auth_user;
+
+    $book = Book::where('id', $id)
+                ->where('user_id', $user->id)
+                ->first();
+
+    if (!$book) {
+        return response()->json([
+            'status' => false,
+            'message' => 'Book not found'
+        ]);
+    }
+
+    return response()->json([
+        'status' => true,
+        'book' => $book
     ]);
 }
 
@@ -184,32 +210,24 @@ public function approve(Request $request, $id)
     if ($user->role != 'reviewer') {
         return response()->json([
             'status' => false,
-            'message' => 'Only reviewers can approve books'
+            'message' => 'Access denied'
         ], 403);
     }
 
-    $book = Book::find($id);
-
-    if (!$book) {
-        return response()->json([
-            'status' => false,
-            'message' => 'Book not found'
-        ], 404);
-    }
+    $book = Book::findOrFail($id);
 
     if ($book->status != 'under_review') {
-        return response()->json([
-            'status' => false,
-            'message' => 'Book is not under review'
-        ], 422);
-    }
+    return response()->json([
+        'status' => false,
+        'message' => 'Book must be under review first'
+    ], 422);
+}
 
     $book->status = 'approved';
     $book->save();
 
     return response()->json([
         'status' => true,
-        'message' => 'Book approved successfully',
         'book' => $book
     ]);
 }

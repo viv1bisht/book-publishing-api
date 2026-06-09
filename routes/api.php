@@ -34,6 +34,19 @@ Route::post('/books/{id}/publish', [BookController::class,'publish']);
 Route::post('/books/{id}/upload', [BookController::class, 'upload']);
 
 Route::get('/dashboard', [AuthController::class, 'dashboard']);
+
+Route::get('/books/{id}', [BookController::class, 'show']);
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::put('/chapters/{id}', [ChapterController::class, 'update']);
+
+Route::delete('/chapters/{id}', [ChapterController::class, 'destroy']);
+
+
+Route::put('/pages/{id}', [PageController::class, 'update']);
+
+Route::delete('/pages/{id}', [PageController::class, 'destroy']);
 });
 
 /*
