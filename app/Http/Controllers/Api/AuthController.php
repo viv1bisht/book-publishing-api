@@ -70,6 +70,8 @@ public function login(Request $request)
     ]);
 }
 
+//profile
+
  public function profile(Request $request)
 {
     return response()->json([
@@ -78,6 +80,7 @@ public function login(Request $request)
     ]);
 }
 
+///dashboard
 public function dashboard(Request $request)
 {
     $user = $request->auth_user;

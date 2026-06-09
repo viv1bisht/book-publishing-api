@@ -43,6 +43,7 @@ public function index(Request $request)
     ]);
 }
 
+///Update
 public function update(Request $request, $id)
 {
     $user = $request->auth_user;
@@ -76,6 +77,8 @@ public function update(Request $request, $id)
     ]);
 }
 
+
+//delete
 public function destroy(Request $request, $id)
 {
     $user = $request->auth_user;
@@ -106,6 +109,8 @@ public function destroy(Request $request, $id)
     ]);
 }
 
+
+///submit
 public function submit(Request $request, $id)
 {
     $user = $request->auth_user;
@@ -171,6 +176,7 @@ public function submit(Request $request, $id)
     ]);
 }
 
+///approve
 public function approve(Request $request, $id)
 {
     $user = $request->auth_user;
@@ -208,6 +214,8 @@ public function approve(Request $request, $id)
     ]);
 }
 
+
+///Reject
 public function reject(Request $request, $id)
 {
     $user = $request->auth_user;
@@ -245,6 +253,7 @@ public function reject(Request $request, $id)
     ]);
 }
 
+///publish
 public function publish(Request $request, $id)
 {
     $user = $request->auth_user;
@@ -282,7 +291,7 @@ public function publish(Request $request, $id)
     ]);
 }
 
- 
+ ///upload
 
 public function upload(Request $request, $id)
 {

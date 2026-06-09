@@ -8,7 +8,8 @@ use App\Http\Controllers\Api\BookController;
 
  Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::middleware('jwt')->group(function () {
+
+    Route::middleware('jwt')->group(function () {
 
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::post('/books', [BookController::class, 'store']);
